@@ -61,6 +61,11 @@ function getText(page: RawPage, name: string) {
   return "";
 }
 
+function getDate(page: RawPage, name: string) {
+  const prop = getProp(page, name);
+  return typeof prop?.date?.start === "string" ? prop.date.start : "";
+}
+
 function getCheckbox(page: RawPage, name: string) {
   return getProp(page, name)?.checkbox === true;
 }
@@ -139,7 +144,16 @@ export async function getDashboardData(): Promise<DashboardData> {
             metric: getText(row, "Metric to Watch"),
             cta: getText(row, "CTA"),
             asset: getText(row, "Asset Needed"),
-            notes: getText(row, "Notes")
+            notes: getText(row, "Notes"),
+            date: getDate(row, "Date"),
+            caption: getText(row, "Caption"),
+            cloudinaryUrl: getText(row, "Cloudinary Asset"),
+            canvaUrl: getText(row, "Canva Link"),
+            shopifyUrl: getText(row, "Shopify Link"),
+            reelFile: getText(row, "Reel File"),
+            captionStatus: getText(row, "Caption Status"),
+            channel: getText(row, "Channel"),
+            status: getText(row, "Status")
           };
         })
         .sort((a, b) => a.day - b.day),

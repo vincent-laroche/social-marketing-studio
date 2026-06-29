@@ -8,6 +8,16 @@ export type LaunchPost = {
   cta: string;
   asset: string;
   notes: string;
+  date?: string;
+  time?: string;
+  caption?: string;
+  cloudinaryUrl?: string;
+  canvaUrl?: string;
+  shopifyUrl?: string;
+  reelFile?: string;
+  captionStatus?: string;
+  status?: string;
+  channel?: string;
 };
 
 export type ReelIdea = {
@@ -188,9 +198,55 @@ export const designRecipes = [
   { name: "Video overlay", bestFor: "Reels, TikTok, Stories, Shorts", surface: "Live video first, light text over safe scrim", avoid: "Text over hairline detail or lower UI conflict" }
 ];
 
-export function formatCounts() {
-  return launchPosts.reduce<Record<string, number>>((acc, post) => {
+const weekdayOrder = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+export function formatCounts(posts: LaunchPost[] = launchPosts) {
+  return posts.reduce<Record<string, number>>((acc, post) => {
     acc[post.format] = (acc[post.format] || 0) + 1;
     return acc;
   }, {});
+}
+
+export function recommendedPostTime(post: LaunchPost) {
+  if (post.time) return post.time;
+  if (post.format === "Founder Reel") return "12:30 PM";
+  if (post.format === "Reel") return "12:30 PM";
+  if (post.format === "Carousel") return "10:00 AM";
+  if (post.format === "Static + Stories") return "9:30 AM";
+  return "11:00 AM";
+}
+
+export function isOperationalTime(post: LaunchPost) {
+  return !post.time;
+}
+
+export function draftCaption(post: LaunchPost) {
+  if (post.caption) return post.caption;
+
+  const note = post.notes.replace(/^.*?Stories:\s*/i, "").replace(/\.$/, "");
+  const body = note && note !== post.notes ? note : post.pillar;
+  return `${post.hook}\n\n${body}.\n\n${post.cta}.`;
+}
+
+export function storyPlanForLaunchDay(dayNumber: number, sourceStories: StoryDay[] = stories) {
+  const weekday = weekdayOrder[(dayNumber - 1) % weekdayOrder.length];
+  return sourceStories.find((story) => story.day === weekday) || sourceStories[0];
+}
+
+export function missingPostFields(post: LaunchPost) {
+  const missing: string[] = [];
+  if (!post.date) missing.push("date");
+  if (!post.time) missing.push("time");
+  if (!post.caption) missing.push("caption");
+  if (!post.cloudinaryUrl) missing.push("Cloudinary URL");
+  if ((post.format.includes("Reel") || post.format === "Founder Reel") && !post.reelFile) missing.push("reel file");
+  if (!post.canvaUrl) missing.push("Canva link");
+  return missing;
+}
+
+export function postProductionStatus(post: LaunchPost) {
+  const missing = missingPostFields(post);
+  if (missing.length === 0) return "Ready";
+  if (missing.length <= 2) return "Needs final asset";
+  return "Planning details missing";
 }
