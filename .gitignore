@@ -1,0 +1,10 @@
+.next
+dist
+node_modules
+.env
+.env.local
+.wrangler
+.playwright-cli
+output
+tsconfig.tsbuildinfo
+*.log

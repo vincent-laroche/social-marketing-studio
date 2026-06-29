@@ -1,0 +1,723 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;600&family=Instrument+Serif:ital@0;1&display=swap");
+
+:root {
+  --harbor: #0f2a34;
+  --forest: #093b33;
+  --champagne: #d8c08a;
+  --ivory: #f2ede1;
+  --ash: #d7d2c7;
+  --sapphire: #213f54;
+  --emerald: #0a5e4e;
+  --ink-soft: rgba(15, 42, 52, 0.72);
+  --line: rgba(15, 42, 52, 0.18);
+  --line-dark: rgba(242, 237, 225, 0.18);
+  --surface: #f8f4eb;
+  --radius: 8px;
+  --font-sans: Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "Geist Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--ivory);
+}
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--harbor);
+  font-family: var(--font-sans);
+  line-height: 1.45;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+main {
+  min-block-size: 100dvh;
+}
+
+.hero {
+  background: var(--harbor);
+  color: var(--ivory);
+  padding: 22px clamp(18px, 4vw, 56px) 72px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-inline-size: 1440px;
+  margin-inline: auto;
+  padding-block: 8px 42px;
+  border-block-end: 1px solid var(--line-dark);
+}
+
+.topbar div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px 22px;
+  font-size: 13px;
+  color: var(--ash);
+}
+
+.wordmark {
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 3vw, 36px);
+  white-space: nowrap;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  align-items: end;
+  gap: clamp(28px, 5vw, 72px);
+  max-inline-size: 1440px;
+  margin-inline: auto;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: inherit;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-block-start: 0;
+}
+
+h1 {
+  max-inline-size: 980px;
+  margin-block-end: 24px;
+  font-family: var(--font-serif);
+  font-size: clamp(52px, 7vw, 112px);
+  font-weight: 400;
+  line-height: 0.95;
+}
+
+h2 {
+  margin-block-end: 16px;
+  font-family: var(--font-serif);
+  font-size: clamp(34px, 4.4vw, 68px);
+  font-weight: 400;
+  line-height: 1.02;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 1.18;
+}
+
+.lede {
+  max-inline-size: 720px;
+  color: var(--ash);
+  font-size: clamp(17px, 1.6vw, 22px);
+}
+
+.heroActions,
+.countPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.button {
+  display: inline-flex;
+  min-block-size: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ivory);
+  border-radius: 4px;
+  background: var(--ivory);
+  color: var(--harbor);
+  font-weight: 650;
+  padding: 11px 18px;
+}
+
+.button.ghost {
+  background: transparent;
+  color: var(--ivory);
+}
+
+.syncCard {
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius);
+  background: rgba(242, 237, 225, 0.06);
+  padding: 24px;
+}
+
+.syncCard h2 {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  font-weight: 650;
+}
+
+.syncCard p,
+.syncCard small {
+  color: var(--ash);
+}
+
+.syncLive,
+.syncSeed,
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.syncLive {
+  color: var(--champagne);
+}
+
+.syncSeed {
+  color: var(--ash);
+}
+
+.section {
+  max-inline-size: 1440px;
+  margin-inline: auto;
+  padding: 76px clamp(18px, 4vw, 56px);
+}
+
+.metricsBand {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  max-inline-size: none;
+  padding: 0 clamp(18px, 4vw, 56px);
+  background: var(--ash);
+}
+
+.metric {
+  min-block-size: 190px;
+  background: var(--ivory);
+  padding: 28px;
+}
+
+.metric span,
+.metric p,
+.recipe small,
+.calendarCard small,
+.mockMeta p,
+.storyRow small {
+  color: var(--ink-soft);
+}
+
+.metric strong {
+  display: block;
+  margin-block: 8px;
+  font-family: var(--font-mono);
+  font-size: 38px;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+
+.split > div:first-child p:not(.eyebrow),
+.firstNine > div:first-child p {
+  color: var(--ink-soft);
+  font-size: 18px;
+}
+
+.paletteGrid,
+.recipeGrid,
+.calendarGrid,
+.mockupGrid,
+.sourceMap {
+  display: grid;
+  gap: 14px;
+}
+
+.paletteGrid {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.swatch,
+.recipe,
+.calendarCard,
+.sourceMap article {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 18px;
+}
+
+.swatch span {
+  display: block;
+  aspect-ratio: 16 / 9;
+  border-radius: 5px;
+  margin-block-end: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.swatch strong,
+.swatch code {
+  display: block;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.recipeGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding-block-start: 0;
+}
+
+.recipe {
+  min-block-size: 220px;
+}
+
+.recipe span,
+.calendarCard > span,
+.mockTop,
+.sourceMap code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--sapphire);
+}
+
+.launchArc {
+  display: grid;
+  grid-template-columns: 1.15fr repeat(3, 1fr);
+  gap: 18px;
+  background: var(--forest);
+  color: var(--ivory);
+  max-inline-size: none;
+}
+
+.launchArc > div,
+.launchArc article {
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.launchArc article {
+  background: rgba(242, 237, 225, 0.05);
+}
+
+.launchArc strong,
+.launchArc span {
+  display: block;
+}
+
+.launchArc span {
+  margin-block: 10px;
+  color: var(--champagne);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.launchArc p {
+  color: var(--ash);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  margin-block-end: 24px;
+}
+
+.headerNote {
+  max-inline-size: 480px;
+  color: var(--ink-soft);
+}
+
+.calendarGrid {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.calendarCard {
+  display: grid;
+  min-block-size: 248px;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 10px;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 260px;
+}
+
+@supports not (content-visibility: auto) {
+  .calendarCard,
+  .mockup {
+    contain: layout style paint;
+  }
+}
+
+.calendarCard h3 {
+  font-size: 19px;
+}
+
+.calendarCard p {
+  color: var(--forest);
+}
+
+.calendarCard footer {
+  display: grid;
+  gap: 8px;
+}
+
+.firstNine {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+}
+
+.nineGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--harbor);
+  border: 1px solid var(--harbor);
+}
+
+.nineGrid div {
+  aspect-ratio: 1 / 1;
+  display: grid;
+  align-content: space-between;
+  background: var(--ivory);
+  padding: 16px;
+}
+
+.nineGrid div:nth-child(2n) {
+  background: var(--ash);
+}
+
+.nineGrid div:nth-child(3n) {
+  background: var(--harbor);
+  color: var(--ivory);
+}
+
+.nineGrid span {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.nineGrid p {
+  margin: 0;
+  font-weight: 650;
+}
+
+.mockupGrid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.mockup {
+  container-type: inline-size;
+  display: grid;
+  gap: 14px;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 560px;
+}
+
+.mockCanvas {
+  aspect-ratio: 4 / 5;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto auto;
+  gap: 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--ash);
+  padding: 18px;
+  overflow: hidden;
+}
+
+.mockupReel .mockCanvas {
+  aspect-ratio: 9 / 16;
+}
+
+.mockupDark .mockCanvas {
+  background: var(--harbor);
+  color: var(--ivory);
+  border-color: var(--harbor);
+}
+
+.mockTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mockupDark .mockTop,
+.mockupDark .mockCanvas p {
+  color: var(--ash);
+}
+
+.mockMedia {
+  display: grid;
+  place-items: center;
+  min-block-size: 120px;
+  border: 1px solid currentColor;
+  border-radius: 5px;
+  background:
+    linear-gradient(135deg, transparent 0 48%, rgba(15, 42, 52, 0.1) 48% 52%, transparent 52%),
+    rgba(242, 237, 225, 0.32);
+  color: var(--sapphire);
+  font-family: var(--font-mono);
+}
+
+.mockupDark .mockMedia {
+  color: var(--champagne);
+  background:
+    linear-gradient(135deg, transparent 0 48%, rgba(242, 237, 225, 0.16) 48% 52%, transparent 52%),
+    rgba(242, 237, 225, 0.06);
+}
+
+.mockCanvas h3 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 15cqi, 54px);
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+.mockCanvas p {
+  margin: 0;
+  color: var(--forest);
+  font-weight: 650;
+}
+
+.mockRule {
+  inline-size: 44px;
+  block-size: 2px;
+  background: var(--champagne);
+}
+
+.mockMeta {
+  padding-inline: 4px;
+}
+
+.mockMeta strong,
+.mockMeta span {
+  display: block;
+}
+
+.mockMeta span {
+  margin-block-start: 8px;
+  color: var(--sapphire);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.systems {
+  background: var(--sapphire);
+  color: var(--ivory);
+  max-inline-size: none;
+}
+
+.systemColumns,
+.intelligence {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.systemColumns > article,
+.intelligence article {
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius);
+  padding: 24px;
+  background: rgba(242, 237, 225, 0.06);
+}
+
+details {
+  border-block-start: 1px solid var(--line-dark);
+  padding-block: 14px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 650;
+}
+
+details p,
+.systemColumns small {
+  color: var(--ash);
+}
+
+.storyRow {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 4px 16px;
+  padding-block: 12px;
+  border-block-start: 1px solid var(--line-dark);
+}
+
+.storyRow small {
+  grid-column: 2;
+}
+
+.tableSection {
+  display: grid;
+  gap: 24px;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+table {
+  inline-size: 100%;
+  min-inline-size: 760px;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+th,
+td {
+  padding: 16px;
+  text-align: start;
+  border-block-end: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  color: var(--sapphire);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.intelligence {
+  max-inline-size: none;
+  background: var(--harbor);
+  color: var(--ivory);
+}
+
+.objectionList,
+.weekList {
+  display: grid;
+  gap: 12px;
+  max-block-size: 680px;
+  overflow: auto;
+  scrollbar-gutter: stable;
+}
+
+.objectionList div,
+.weekList div {
+  border: 1px solid var(--line-dark);
+  border-radius: 6px;
+  padding: 14px;
+  background: rgba(242, 237, 225, 0.05);
+}
+
+.objectionList p,
+.weekList p,
+.objectionList small {
+  color: var(--ash);
+}
+
+.sourceMap {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.sourceMap > div {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 980px) {
+  .heroGrid,
+  .split,
+  .firstNine,
+  .systemColumns,
+  .intelligence {
+    grid-template-columns: 1fr;
+  }
+
+  .metricsBand,
+  .recipeGrid,
+  .launchArc {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .launchArc > div {
+    grid-column: 1 / -1;
+  }
+
+  .sectionHeader {
+    align-items: start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero {
+    padding-block-end: 48px;
+  }
+
+  .topbar {
+    align-items: start;
+    flex-direction: column;
+    padding-block-end: 28px;
+  }
+
+  h1 {
+    font-size: 50px;
+  }
+
+  .section {
+    padding-block: 52px;
+  }
+
+  .metricsBand,
+  .recipeGrid,
+  .launchArc {
+    grid-template-columns: 1fr;
+  }
+
+  .metric {
+    min-block-size: auto;
+  }
+
+  .nineGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .nineGrid div {
+    aspect-ratio: auto;
+    min-block-size: 160px;
+  }
+
+  .storyRow {
+    grid-template-columns: 1fr;
+  }
+
+  .storyRow small {
+    grid-column: auto;
+  }
+}
