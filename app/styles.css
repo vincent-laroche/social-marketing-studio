@@ -472,6 +472,72 @@ th {
   margin-block: 12px 14px;
 }
 
+.nextStepPanel {
+  display: grid;
+  gap: 10px;
+  margin-block-start: 12px;
+  border: 1px solid rgba(154, 106, 29, 0.24);
+  border-radius: 7px;
+  background: #fff8ea;
+  padding: 12px;
+}
+
+.nextStepHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.nextStepHeader > span,
+.completionTracks span {
+  color: var(--amber);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.nextStepPanel > strong {
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.completionTracks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.completionTracks div {
+  border: 1px solid rgba(154, 106, 29, 0.16);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.62);
+  padding: 9px;
+}
+
+.completionTracks p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.postDetail.reel .nextStepPanel {
+  border-color: rgba(46, 89, 104, 0.24);
+  background: #eef6f8;
+}
+
+.postDetail.reel .nextStepHeader > span,
+.postDetail.reel .completionTracks span {
+  color: var(--blue);
+}
+
+.postDetail.reel .completionTracks div {
+  border-color: rgba(46, 89, 104, 0.16);
+}
+
 .productionPreview {
   display: grid;
   grid-template-columns: minmax(112px, 0.36fr) minmax(0, 1fr);
@@ -889,6 +955,10 @@ dd small {
   }
 
   .productionPreview {
+    grid-template-columns: 1fr;
+  }
+
+  .completionTracks {
     grid-template-columns: 1fr;
   }
 

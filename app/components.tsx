@@ -101,6 +101,7 @@ export function PostDetailCard({ post, surface = "feed" }: { post: LaunchPost; s
   const missing = missingPostFields(post);
   const timeIsFallback = isOperationalTime(post);
   const url = post.cloudinaryUrl || post.canvaUrl || post.reelFile;
+  const completion = postCompletionPlan(post);
 
   return (
     <article className={`postDetail ${surface}`}>
@@ -108,6 +109,23 @@ export function PostDetailCard({ post, surface = "feed" }: { post: LaunchPost; s
         <span>Day {post.day}</span>
         <StatusPill tone={missing.length ? "warn" : "good"}>{postProductionStatus(post)}</StatusPill>
       </div>
+      <section className="nextStepPanel" aria-label="Recommended next step">
+        <div className="nextStepHeader">
+          <span>Recommended next step</span>
+          <StatusPill tone={completion.tone}>{completion.status}</StatusPill>
+        </div>
+        <strong>{completion.nextStep}</strong>
+        <div className="completionTracks">
+          <div>
+            <span>Done</span>
+            <p>{completion.done.length ? completion.done.join(", ") : "No tracked completion items are done yet."}</p>
+          </div>
+          <div>
+            <span>Pending</span>
+            <p>{completion.pending.length ? completion.pending.join(", ") : "Ready to schedule in HubSpot."}</p>
+          </div>
+        </div>
+      </section>
       <h3>{post.title}</h3>
       <div className="productionPreview">
         <div className="previewFrame">
@@ -139,6 +157,50 @@ export function PostDetailCard({ post, surface = "feed" }: { post: LaunchPost; s
       {missing.length ? <p className="missingLine">Missing: {missing.join(", ")}</p> : null}
     </article>
   );
+}
+
+function postCompletionPlan(post: LaunchPost) {
+  const done: string[] = [];
+  const pending: string[] = [];
+
+  if (post.date) done.push("date set");
+  else pending.push("date");
+
+  if (post.time) done.push("time set");
+  else pending.push("posting time");
+
+  if (post.caption) done.push("caption approved");
+  else pending.push("final caption");
+
+  if (post.cloudinaryUrl) done.push("Cloudinary asset linked");
+  else pending.push("Cloudinary URL");
+
+  if (post.canvaUrl) done.push("Canva/source linked");
+  else pending.push("Canva/source link");
+
+  if (post.format.includes("Reel")) {
+    if (post.reelFile) done.push("reel file linked");
+    else pending.push("reel file");
+  }
+
+  if (post.status) done.push(`status: ${post.status}`);
+  else pending.push("Notion status");
+
+  const nextStep = getRecommendedNextStep(post);
+  const status = pending.length ? `${done.length}/${done.length + pending.length} complete` : "Ready";
+  const tone: "good" | "warn" | "bad" | "neutral" | "info" = pending.length ? "warn" : "good";
+
+  return { done, pending, nextStep, status, tone };
+}
+
+function getRecommendedNextStep(post: LaunchPost) {
+  if (!post.cloudinaryUrl) return "Upload or select the final creative in Cloudinary, then paste the source URL into Notion.";
+  if (post.format.includes("Reel") && !post.reelFile) return "Attach the final Reel file or export link before scheduling.";
+  if (!post.caption) return "Review the draft caption, approve it, and add the final caption to Notion.";
+  if (!post.date || !post.time) return "Confirm the publishing date and exact posting time.";
+  if (!post.canvaUrl) return "Add the Canva or source production link for traceability.";
+  if (!post.status) return "Set the Notion status to ready, then schedule the post in HubSpot.";
+  return "Schedule or confirm this post in HubSpot Social.";
 }
 
 export function StorySchedule({ story }: { story: StoryDay }) {
