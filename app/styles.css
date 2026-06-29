@@ -220,6 +220,7 @@ th {
   min-block-size: 26px;
   align-items: center;
   justify-content: center;
+  max-inline-size: 100%;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
   background: var(--surface-2);
@@ -229,7 +230,8 @@ th {
   font-weight: 700;
   line-height: 1;
   padding: 6px 9px;
-  white-space: nowrap;
+  text-align: center;
+  white-space: normal;
 }
 
 .statusPill.good {
@@ -261,6 +263,55 @@ th {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
   margin-block-end: 22px;
+}
+
+.shortcutGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 12px;
+  margin-block-end: 22px;
+}
+
+.shortcutCard {
+  display: grid;
+  min-block-size: 134px;
+  align-content: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  padding: 18px;
+  text-decoration: none;
+}
+
+.shortcutCard.primary {
+  border-color: rgba(46, 89, 104, 0.35);
+  background: #e5eef0;
+}
+
+.shortcutCard span {
+  color: var(--blue);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.shortcutCard strong {
+  font-size: clamp(22px, 2.6vw, 34px);
+  line-height: 1.05;
+}
+
+.shortcutCard p {
+  max-inline-size: 580px;
+  margin: 0;
+  color: var(--muted);
+}
+
+.shortcutCard:hover {
+  border-color: var(--blue);
 }
 
 .statBox {
@@ -323,8 +374,8 @@ th {
 
 .dayRow {
   display: grid;
-  grid-template-columns: 92px repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: 112px repeat(3, minmax(0, 1fr));
+  gap: 14px;
   scroll-margin-block-start: 84px;
 }
 
@@ -345,7 +396,8 @@ th {
 .dayRail {
   display: grid;
   block-size: max-content;
-  gap: 8px;
+  gap: 10px;
+  align-content: start;
   padding: 14px;
 }
 
@@ -362,9 +414,19 @@ th {
   line-height: 1;
 }
 
+.dayRail .statusPill {
+  justify-content: flex-start;
+  border-radius: 6px;
+  font-size: 10px;
+  line-height: 1.25;
+  padding: 7px 8px;
+  text-align: start;
+  text-transform: uppercase;
+}
+
 .dayLane {
   min-inline-size: 0;
-  padding: 12px;
+  padding: 14px;
 }
 
 .dayLane > h2 {
@@ -379,7 +441,7 @@ th {
 .postDetail,
 .storySchedule,
 .emptyLane {
-  padding: 14px;
+  padding: 16px;
 }
 
 .postDetail.reel {
@@ -391,9 +453,9 @@ th {
 .tileHeader,
 .mockChrome {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 8px;
+  gap: 12px;
 }
 
 .postTopline > span,
@@ -403,6 +465,56 @@ th {
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 700;
+}
+
+.postDetail > h3,
+.storySchedule > h3 {
+  margin-block: 12px 14px;
+}
+
+.productionPreview {
+  display: grid;
+  grid-template-columns: minmax(112px, 0.36fr) minmax(0, 1fr);
+  gap: 12px;
+  align-items: stretch;
+  margin-block-end: 14px;
+}
+
+.previewFrame {
+  display: grid;
+  min-block-size: 104px;
+  place-items: center;
+  border: 1px dashed var(--line-strong);
+  border-radius: 6px;
+  background:
+    linear-gradient(135deg, transparent 0 47%, rgba(46, 89, 104, 0.16) 47% 53%, transparent 53%),
+    #f1eee6;
+}
+
+.postDetail.reel .previewFrame {
+  background:
+    linear-gradient(135deg, transparent 0 47%, rgba(46, 89, 104, 0.16) 47% 53%, transparent 53%),
+    #eaf2f4;
+}
+
+.previewFrame span {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.productionPreview strong {
+  display: block;
+  margin-block-end: 6px;
+  color: var(--blue);
+}
+
+.productionPreview p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
 }
 
 .detailGrid {
@@ -448,7 +560,7 @@ dd small {
 }
 
 .captionBlock {
-  margin-block-start: 12px;
+  margin-block-start: 14px;
   border-inline-start: 3px solid var(--blue);
   background: var(--surface-2);
   padding: 12px;
@@ -686,7 +798,7 @@ dd small {
 
 @media (max-width: 1100px) {
   .dayRow {
-    grid-template-columns: 78px minmax(0, 1fr);
+    grid-template-columns: 92px minmax(0, 1fr);
   }
 
   .dayLane {
@@ -731,6 +843,7 @@ dd small {
 
   .pageHeader,
   .statsGrid,
+  .shortcutGrid,
   .mockSystemStrip,
   .systemGrid {
     grid-template-columns: 1fr;
@@ -772,6 +885,10 @@ dd small {
 
   .detailGrid div,
   .detailGrid.compact div {
+    grid-template-columns: 1fr;
+  }
+
+  .productionPreview {
     grid-template-columns: 1fr;
   }
 

@@ -1,10 +1,9 @@
-import { DashboardShell, PageHeader, PostDetailCard, Stat, StatusPill, StorySchedule } from "@/app/components";
-import { formatCounts, storyPlanForLaunchDay } from "@/lib/data";
+import { DashboardShell, HubSpotShortcuts, PageHeader, PostDetailCard, StatusPill, StorySchedule } from "@/app/components";
+import { storyPlanForLaunchDay } from "@/lib/data";
 import { getDashboardData } from "@/lib/notion";
 
 export default async function DailyPage() {
   const data = await getDashboardData();
-  const counts = formatCounts(data.launchPosts);
 
   return (
     <DashboardShell data={data}>
@@ -15,12 +14,7 @@ export default async function DailyPage() {
         </p>
       </PageHeader>
 
-      <section className="statsGrid">
-        <Stat label="Launch days" value={data.launchPosts.length} note="One primary Content Production Board item per launch day." />
-        <Stat label="Feed posts" value={(counts.Static || 0) + (counts.Carousel || 0) + (counts["Static + Stories"] || 0)} note="Static, carousel, and static plus story executions." />
-        <Stat label="Reel days" value={(counts.Reel || 0) + (counts["Founder Reel"] || 0)} note="Short-form video days pulled from the calendar." />
-        <Stat label="Story system" value={data.stories.length} note="Recurring weekly story rhythm mapped across the 30 days." />
-      </section>
+      <HubSpotShortcuts />
 
       <nav className="dayJump" aria-label="Jump to launch day">
         {data.launchPosts.map((post) => (

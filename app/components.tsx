@@ -80,6 +80,23 @@ export function Stat({ label, value, note }: { label: string; value: string | nu
   );
 }
 
+export function HubSpotShortcuts() {
+  return (
+    <section className="shortcutGrid" aria-label="Social platform shortcuts">
+      <a className="shortcutCard primary" href="https://app.hubspot.com/social-composer/50966981?create=true&from=manage" target="_blank" rel="noreferrer">
+        <span>HubSpot Social</span>
+        <strong>Create a new post</strong>
+        <p>Open the composer with the account context already set.</p>
+      </a>
+      <a className="shortcutCard" href="https://app.hubspot.com/social/50966981/manage/published" target="_blank" rel="noreferrer">
+        <span>Social Home</span>
+        <strong>Manage published posts</strong>
+        <p>Go straight to the HubSpot social publishing dashboard.</p>
+      </a>
+    </section>
+  );
+}
+
 export function PostDetailCard({ post, surface = "feed" }: { post: LaunchPost; surface?: "feed" | "reel" | "mockup" }) {
   const missing = missingPostFields(post);
   const timeIsFallback = isOperationalTime(post);
@@ -92,6 +109,15 @@ export function PostDetailCard({ post, surface = "feed" }: { post: LaunchPost; s
         <StatusPill tone={missing.length ? "warn" : "good"}>{postProductionStatus(post)}</StatusPill>
       </div>
       <h3>{post.title}</h3>
+      <div className="productionPreview">
+        <div className="previewFrame">
+          <span>{post.cloudinaryUrl ? "Cloudinary linked" : "Visual mockup"}</span>
+        </div>
+        <div>
+          <strong>{post.format}</strong>
+          <p>{post.asset}</p>
+        </div>
+      </div>
       <dl className="detailGrid">
         <div><dt>Time</dt><dd>{recommendedPostTime(post)} {timeIsFallback ? <small>operational fallback</small> : null}</dd></div>
         <div><dt>Format</dt><dd>{post.format}</dd></div>
