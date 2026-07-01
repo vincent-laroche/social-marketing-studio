@@ -2,7 +2,7 @@ import { DashboardShell, MockupCard, PageHeader, StatusPill } from "@/app/compon
 import { designRecipes, palette, type LaunchPost } from "@/lib/data";
 import { getDashboardData } from "@/lib/notion";
 
-const formatOrder: LaunchPost["format"][] = ["Static + Stories", "Static", "Carousel", "Founder Reel", "Reel"];
+const formatOrder: LaunchPost["format"][] = ["Static + Stories", "Static", "Carousel", "Founder Reel", "Reel + Stories", "Reel"];
 
 export default async function MockupsPage() {
   const data = await getDashboardData();

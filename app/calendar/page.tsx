@@ -18,7 +18,7 @@ export default async function CalendarPage() {
 
       <section className="statsGrid">
         <Stat label="Carousels" value={counts.Carousel || 0} note="Saveable education and objection-handling posts." />
-        <Stat label="Reels" value={(counts.Reel || 0) + (counts["Founder Reel"] || 0)} note="Reach and founder/product proof content." />
+        <Stat label="Reels" value={(counts.Reel || 0) + (counts["Reel + Stories"] || 0) + (counts["Founder Reel"] || 0)} note="Reach and founder/product proof content." />
         <Stat label="Static posts" value={(counts.Static || 0) + (counts["Static + Stories"] || 0)} note="Proof, product, quote, and brand moments." />
         <Stat label="Missing URLs" value={missingAssets} note="Posts without a Cloudinary source URL in Notion." />
       </section>

@@ -80,6 +80,49 @@ function dayFromTitle(title: string) {
   return match ? Number(match[1]) : 999;
 }
 
+function applyReviewCorrections(post: LaunchPost): LaunchPost {
+  if (post.day === 1) {
+    return {
+      ...post,
+      asset: post.asset || "Pure wordmark tile, off-white/obsidian variant",
+      caption: "Eight years ago, this was OneHead Hair. Today it becomes Hair Solutions Co.\n\nWe've spent the last year rebuilding everything: how we make hair systems, how we photograph them, how we talk about them, and who we're talking to.\n\nThis is what comes next.\n\nStay close. Reply with a question."
+    };
+  }
+
+  if (post.day === 5) {
+    return {
+      ...post,
+      title: "Lace Elite, photographed honestly.",
+      hook: "Lace Elite, photographed honestly.",
+      asset: "Lace Elite hero product photo on paper card",
+      notes: "Swiss-lace product trust. Stories: macro frames of lace and hairline."
+    };
+  }
+
+  if (post.day === 7) {
+    return {
+      ...post,
+      format: "Reel + Stories",
+      metric: "Watch time, profile visits, replies",
+      asset: "Consented quote voiceover, proof frame, subtle product B-roll",
+      notes: "Second week-one reel. Proof + trust. Anonymize unless consent is confirmed. Stories: repost with review prompt."
+    };
+  }
+
+  if (post.day === 12) {
+    return {
+      ...post,
+      title: "The base types, explained.",
+      hook: "The base types, explained.",
+      pillar: "Base types / education",
+      asset: "5-slide guide: lace, skin/poly, mono, hybrid, frontal",
+      notes: "Education + saves. Stories: base-type quiz."
+    };
+  }
+
+  return post;
+}
+
 async function queryDatabase(token: string, databaseId: string): Promise<RawPage[]> {
   const response = await fetch(`https://api.notion.com/v1/databases/${databaseId}/query`, {
     method: "POST",
@@ -135,7 +178,7 @@ export async function getDashboardData(): Promise<DashboardData> {
       launchPosts: contentRows
         .map((row) => {
           const title = getTitle(row, "Post");
-          return {
+          return applyReviewCorrections({
             day: dayFromTitle(title),
             title: title.replace(/^Day\s+\d+\s+—\s+/i, ""),
             hook: getText(row, "Hook"),
@@ -154,7 +197,7 @@ export async function getDashboardData(): Promise<DashboardData> {
             captionStatus: getText(row, "Caption Status"),
             channel: getText(row, "Channel"),
             status: getText(row, "Status")
-          };
+          });
         })
         .sort((a, b) => a.day - b.day),
       reels: reelRows.map((row) => ({

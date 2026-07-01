@@ -2,7 +2,7 @@ export type LaunchPost = {
   day: number;
   title: string;
   hook: string;
-  format: "Reel" | "Founder Reel" | "Carousel" | "Static" | "Static + Stories";
+  format: "Reel" | "Reel + Stories" | "Founder Reel" | "Carousel" | "Static" | "Static + Stories";
   pillar: string;
   metric: string;
   cta: string;
@@ -80,18 +80,18 @@ export const notionSources = [
 ];
 
 export const launchPosts: LaunchPost[] = [
-  { day: 1, title: "A new chapter starts here.", hook: "A new chapter starts here.", format: "Static + Stories", pillar: "Brand / founder", metric: "Follower reactivation, comments, story replies", cta: "Stay close / reply with a question", asset: "Wordmark tile, off-white/obsidian variant", notes: "Trust + reactivation. Stories: countdown and same company, new standard." },
+  { day: 1, title: "A new chapter starts here.", hook: "A new chapter starts here.", format: "Static + Stories", pillar: "Brand / founder", metric: "Follower reactivation, comments, story replies", cta: "Stay close / reply with a question", asset: "Pure wordmark tile, off-white/obsidian variant", notes: "Trust + reactivation. Stories: countdown and same company, new standard.", caption: "Eight years ago, this was OneHead Hair. Today it becomes Hair Solutions Co.\n\nWe've spent the last year rebuilding everything: how we make hair systems, how we photograph them, how we talk about them, and who we're talking to.\n\nThis is what comes next.\n\nStay close. Reply with a question." },
   { day: 2, title: "For the man who wants to look like himself again.", hook: "For the man who wants to look like himself again.", format: "Carousel", pillar: "Brand / manifesto", metric: "Saves, profile visits, story completion", cta: "Save this / start with the guide", asset: "5-slide manifesto carousel", notes: "Trust + save. Stories: manifesto broken into 4 frames." },
   { day: 3, title: "I wear what I sell.", hook: "I wear what I sell.", format: "Founder Reel", pillar: "Founder credibility", metric: "Watch time, DMs, follows", cta: "DM START with your biggest question", asset: "Vincent talking head + product macro B-roll", notes: "Trust + DM generation. Stories: BTS from filming + question box." },
   { day: 4, title: "What a hair system actually is, in plain English.", hook: "What a hair system actually is, in plain English.", format: "Reel", pillar: "Category education", metric: "Reach, watch time, saves", cta: "Save this before you compare options", asset: "Product in hand, base close-ups, on-head detail", notes: "Reach + education. Stories: poll: transplant / system / not sure." },
-  { day: 5, title: "Lace Fusion VF, photographed honestly.", hook: "Lace Fusion VF, photographed honestly.", format: "Static + Stories", pillar: "Product", metric: "Product page clicks, replies", cta: "View specs / ask about fit", asset: "Hero product photo on paper card", notes: "Product trust. Stories: macro frames of lace and hairline." },
+  { day: 5, title: "Lace Elite, photographed honestly.", hook: "Lace Elite, photographed honestly.", format: "Static + Stories", pillar: "Product", metric: "Product page clicks, replies", cta: "View specs / ask about fit", asset: "Lace Elite hero product photo on paper card", notes: "Swiss-lace product trust. Stories: macro frames of lace and hairline." },
   { day: 6, title: "Will the hairline look real?", hook: "Will the hairline look real?", format: "Carousel", pillar: "Hairline realism", metric: "Saves, shares, profile visits", cta: "Save before you buy your first system", asset: "6-slide proof/education carousel", notes: "Education + saves. Stories: hairline poll + daylight test." },
-  { day: 7, title: "I forgot I was wearing it.", hook: "I forgot I was wearing it.", format: "Static + Stories", pillar: "Testimonial / proof", metric: "Profile visits, replies", cta: "Read reviews / reply PROOF", asset: "Quote card with consented customer quote", notes: "Proof + trust. Anonymize unless consent is confirmed." },
+  { day: 7, title: "I forgot I was wearing it.", hook: "I forgot I was wearing it.", format: "Reel + Stories", pillar: "Testimonial / proof", metric: "Watch time, profile visits, replies", cta: "Read reviews / reply PROOF", asset: "Consented quote voiceover, proof frame, subtle product B-roll", notes: "Second week-one reel. Proof + trust. Anonymize unless consent is confirmed. Stories: repost with review prompt." },
   { day: 8, title: "3 things I check before a system ships.", hook: "3 things I check before a system ships.", format: "Reel", pillar: "QC / founder", metric: "Saves, DMs, watch time", cta: "DM QC for the checklist", asset: "QC checklist B-roll, hands, macro", notes: "Trust + conversion support. Stories: founder desk BTS + poll." },
   { day: 9, title: "New here? Start with these 5 decisions.", hook: "New here? Start with these 5 decisions.", format: "Carousel", pillar: "Start Here / buyer guide", metric: "DMs, saves, link clicks", cta: "DM START and I’ll point you to the right guide", asset: "7-slide decision tree carousel", notes: "Conversion + DM generation. Update pinned posts after this day." },
   { day: 10, title: "Why modern hair systems are not old-school toupees.", hook: "Why modern hair systems are not old-school toupees.", format: "Reel", pillar: "Myth education", metric: "Shares, watch time", cta: "Send this to someone who still thinks toupee", asset: "Talking head + old/new contrast without ridicule", notes: "Reach + objection handling. Stories: myth poll." },
   { day: 11, title: "Mono Pro: breathable, structured, understated.", hook: "Mono Pro: breathable, structured, understated.", format: "Static", pillar: "Product / base types", metric: "Saves, product clicks", cta: "Ask if mono fits your lifestyle", asset: "Mono base product still, macro texture", notes: "Product authority. Stories: 2-frame product spotlight." },
-  { day: 12, title: "Lace, poly, mono — what they actually mean.", hook: "Lace, poly, mono — what they actually mean.", format: "Carousel", pillar: "Base types", metric: "Saves, completion", cta: "Save this before choosing a base", asset: "5-slide base guide", notes: "Education + saves. Stories: base-type quiz." },
+  { day: 12, title: "The base types, explained.", hook: "The base types, explained.", format: "Carousel", pillar: "Base types / education", metric: "Saves, completion", cta: "Save this before choosing a base", asset: "5-slide guide: lace, skin/poly, mono, hybrid, frontal", notes: "Education + saves. Stories: base-type quiz." },
   { day: 13, title: "Can you see the lace?", hook: "Can you see the lace?", format: "Reel", pillar: "Product macro", metric: "Replays, shares, comments", cta: "Comment HAIRLINE for the explainer", asset: "Macro lace/hairline in hand and daylight", notes: "Reach + proof. Stories: repost with naturalness slider." },
   { day: 14, title: "What ownership actually looks like.", hook: "What ownership actually looks like.", format: "Carousel", pillar: "Maintenance", metric: "Saves, DMs", cta: "Save this if you’re considering your first system", asset: "5-slide daily/weekly/monthly care guide", notes: "Education + qualification. Stories: maintenance Q&A box." },
   { day: 15, title: "Confidence is not loud.", hook: "Confidence is not loud.", format: "Static", pillar: "Brand voice", metric: "Shares, comments", cta: "Share with someone considering a quiet change", asset: "Typography hero tile", notes: "Brand authority. Stories: founder note." },
@@ -210,7 +210,7 @@ export function formatCounts(posts: LaunchPost[] = launchPosts) {
 export function recommendedPostTime(post: LaunchPost) {
   if (post.time) return post.time;
   if (post.format === "Founder Reel") return "12:30 PM";
-  if (post.format === "Reel") return "12:30 PM";
+  if (post.format.includes("Reel")) return "12:30 PM";
   if (post.format === "Carousel") return "10:00 AM";
   if (post.format === "Static + Stories") return "9:30 AM";
   return "11:00 AM";
