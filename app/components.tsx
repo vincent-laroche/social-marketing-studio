@@ -23,7 +23,7 @@ export function DashboardShell({ children, data }: { children: React.ReactNode; 
       <aside className="sideNav">
         <Link className="brandMark" href="/daily">
           <span>HSC</span>
-          <strong>Social Ops</strong>
+          <strong>Social Studio</strong>
         </Link>
         <nav aria-label="Dashboard pages">
           {navItems.map((item) => (
