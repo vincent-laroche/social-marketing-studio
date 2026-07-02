@@ -82,7 +82,7 @@ Expected unauthenticated behavior: a `302` redirect to Cloudflare Access login. 
 GitHub is the durable source of truth:
 
 ```text
-https://github.com/vincent-laroche/Social-Marketing-Studio
+https://github.com/vincent-laroche/social-marketing-studio
 ```
 
 The repo should contain everything needed to understand, run, edit, maintain, and redeploy the studio without depending on hidden Codex-only state.
