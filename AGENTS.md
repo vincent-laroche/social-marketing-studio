@@ -8,8 +8,8 @@ This is internal only. Do not treat it as a customer-facing website.
 
 ## Project Coordinates
 
-- Local repo: `/Users/vMac/04_marketing/social-media-marketing-site`
-- GitHub repo: `https://github.com/vincent-laroche/Social-Marketing-Studio`
+- Local repo: `/Users/vMac/03_agents/Projects/Social Media Marketing`
+- GitHub repo: `https://github.com/vincent-laroche/social-marketing-studio`
 - Primary branch: `main`
 - Private live URL: `https://social-marketing-studio.hairsolutions.co`
 - Cloudflare Worker: `social-marketing-studio`
@@ -65,7 +65,7 @@ curl -I https://social-marketing-studio.hairsolutions.co
 ## Git Rules
 
 - Use `main` as the primary branch unless Vincent explicitly changes it.
-- Keep GitHub remote `origin` pointed at `https://github.com/vincent-laroche/Social-Marketing-Studio`.
+- Keep GitHub remote `origin` pointed at `https://github.com/vincent-laroche/social-marketing-studio`.
 - Preserve the prior Sites source remote as `sites-source` if still needed.
 - Keep changes small, reviewable, and reversible.
 - Do not commit generated folders, screenshots, local logs, `.env`, or secrets.

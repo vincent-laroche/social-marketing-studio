@@ -8,8 +8,8 @@ It is not customer-facing.
 
 ## Where It Lives
 
-- Local repo: `/Users/vMac/04_marketing/social-media-marketing-site`
-- GitHub repo: `https://github.com/vincent-laroche/Social-Marketing-Studio`
+- Local repo: `/Users/vMac/03_agents/Projects/Social Media Marketing`
+- GitHub repo: `https://github.com/vincent-laroche/social-marketing-studio`
 - Primary branch: `main`
 - Private live URL: `https://social-marketing-studio.hairsolutions.co`
 - Cloudflare Worker: `social-marketing-studio`
@@ -23,7 +23,7 @@ The live site is internal. Do not say it is private unless unauthenticated acces
 Start with:
 
 ```bash
-cd /Users/vMac/04_marketing/social-media-marketing-site
+cd "/Users/vMac/03_agents/Projects/Social Media Marketing"
 git status --short --branch
 npm run lint
 npm run build
