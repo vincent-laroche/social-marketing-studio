@@ -21,13 +21,19 @@ interface ExecutionContext {
   passThroughOnException(): void;
 }
 
+function withNoIndex(response: Response): Response {
+  const next = new Response(response.body, response);
+  next.headers.set("X-Robots-Tag", "noindex, nofollow");
+  return next;
+}
+
 const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
     if (url.pathname === "/_vinext/image") {
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES];
-      return handleImageOptimization(
+      return withNoIndex(await handleImageOptimization(
         request,
         {
           fetchAsset: (path) => env.ASSETS.fetch(new Request(new URL(path, request.url))),
@@ -37,10 +43,10 @@ const worker = {
           }
         },
         allowedWidths
-      );
+      ));
     }
 
-    return handler.fetch(request, env, ctx);
+    return withNoIndex(await handler.fetch(request, env, ctx));
   }
 };
 

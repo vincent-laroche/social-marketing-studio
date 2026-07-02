@@ -4,6 +4,10 @@ import "./styles.css";
 export const metadata: Metadata = {
   title: "Social Marketing Studio | Hair Solutions Co.",
   description: "Private Hair Solutions Co. studio for social content planning, creative review, content calendars, and production systems.",
+  robots: {
+    index: false,
+    follow: false
+  },
   icons: {
     icon: "/favicon.svg"
   }
