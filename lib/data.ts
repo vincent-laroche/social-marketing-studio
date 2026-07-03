@@ -195,21 +195,20 @@ export const objections: Objection[] = [
 ];
 
 export const palette = [
-  { name: "Harbor Slate", hex: "#0F2A34", role: "Authority dark, primary action, text on light" },
-  { name: "Forest Depth", hex: "#093B33", role: "Editorial trust, founder moments, quote cards" },
-  { name: "Champagne Gold", hex: "#D8C08A", role: "Small premium cue only" },
-  { name: "Ivory Silk", hex: "#F2EDE1", role: "Primary light surface and dark-surface text" },
-  { name: "Ash Ivory", hex: "#D7D2C7", role: "Secondary light surface, borders, muted panels" },
-  { name: "Crown Sapphire", hex: "#213F54", role: "Support structure, specs, lower thirds" },
-  { name: "Emerald Palace", hex: "#0A5E4E", role: "Rare cameo, never CTA or repeated UI" }
+  { name: "Ink Black", hex: "#1B1B1B", role: "Primary dark surface, masthead, high-trust text" },
+  { name: "Deep Charcoal", hex: "#333533", role: "Secondary ink, borders, captions, subdued structure" },
+  { name: "Harbor Navy", hex: "#14213D", role: "Authority headings, education frames, lower thirds" },
+  { name: "Soft Silver", hex: "#E5E5E5", role: "Primary light surface and dark-surface text" },
+  { name: "Muted Silver", hex: "#D6D6D6", role: "Secondary light surface, dividers, quiet panels" },
+  { name: "Copper Clay", hex: "#E06A2A", role: "Single warm accent for CTA, proof cue, or emphasis" }
 ];
 
 export const designRecipes = [
   { name: "Product realism", bestFor: "Hairline close-ups, base material, product range, PDP traffic", surface: "Real image, Ivory, Ash, or Harbor/Forest scrim", avoid: "Covering hairline/base detail or heavy filters" },
   { name: "Education carousel", bestFor: "Buyer questions, base guides, maintenance, expectation-setting", surface: "Ivory and Ash alternating, one dark slide max", avoid: "Dense dark slides or paragraphs on slides" },
-  { name: "Founder / trust", bestFor: "Founder covers, BTS, consultation reassurance", surface: "Founder image, Forest, Harbor, or light editorial layout", avoid: "Emerald as founder brand color or ornate gold framing" },
-  { name: "Proof / testimonial", bestFor: "Approved reviews, client stories, proof cards", surface: "Ivory or Ash preferred", avoid: "Unapproved quotes or universal-result claims" },
-  { name: "Dark editorial", bestFor: "Campaign statements, premium end frames", surface: "Harbor for authority, Forest for intimacy", avoid: "Multiple dark posts in a row" },
+  { name: "Founder / trust", bestFor: "Founder covers, BTS, consultation reassurance", surface: "Founder image, Ink Black, Harbor Navy, or light editorial layout", avoid: "Copper Clay as a repeated founder brand color or ornate framing" },
+  { name: "Proof / testimonial", bestFor: "Approved reviews, client stories, proof cards", surface: "Soft Silver or Muted Silver preferred", avoid: "Unapproved quotes or universal-result claims" },
+  { name: "Dark editorial", bestFor: "Campaign statements, premium end frames", surface: "Ink Black for gravity, Harbor Navy for education", avoid: "Multiple dark posts in a row" },
   { name: "Video overlay", bestFor: "Reels, TikTok, Stories, Shorts", surface: "Live video first, light text over safe scrim", avoid: "Text over hairline detail or lower UI conflict" }
 ];
 
